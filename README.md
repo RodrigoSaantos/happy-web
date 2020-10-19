@@ -75,5 +75,5 @@ $ npm dev
 ```
 
 # 📖 Resultado
+![Alt Text](https://raw.githubusercontent.com/RodrigoSaantos/happy-web/main/happy_web.gif)
 
-![Happy%20-%20WEB%20fe4bdcfae33047ff92d88b8632a497c6/nova_web.gif](Happy%20-%20WEB%20fe4bdcfae33047ff92d88b8632a497c6/nova_web.gif)
