@@ -37,7 +37,7 @@ $ git clone https://github.com/RodrigoSaantos/happy-mobile.git
 Entre na pasta
 
 ```bash
-$ cd web
+$ cd happy-web
 ```
 
 Instale as dependências
