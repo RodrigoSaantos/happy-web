@@ -1,0 +1,91 @@
+#page-dashboard {
+  display: flex;
+}
+
+#page-dashboard main {
+  flex: 1;
+  margin-left: 96px;
+}
+
+#page-dashboard main section {
+  max-width: 80%;
+  margin:  64px auto;
+}
+
+#page-dashboard main section.display-hide {
+  display: none;
+}
+
+#page-dashboard main section header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 122px;
+  border-bottom: 1px solid #D3E2E5 ;
+  margin-bottom: 40px;
+}
+
+#page-dashboard main section header h1 {
+  font-size: 32px;
+  color: #4D6F80;
+}
+
+#page-dashboard main section header span {
+  font-size: 16px;
+  color: #8FA7B3;
+}
+
+#page-dashboard main section div.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 25px;
+}
+
+#page-dashboard main section div.card {
+  width: 600px;
+  height: 309px;
+  background: #FFFFFF;
+  border: 1px solid #D3E2E5;
+  border-radius: 20px;
+  margin: auto;
+}
+
+#page-dashboard main section div.card div.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: 80px;
+  margin: auto;
+}
+
+#page-dashboard main section div.card div.options h2 {
+  font-size: 24px;
+  color: #4D6F80;
+}
+
+#page-dashboard main section div.card div.options div {
+    width: 110px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#page-dashboard main section div.card div.options button {
+  background: #EBF2F5;
+  border-radius: 16px;
+  height: 48px;
+  border: none;
+  width: 48px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#page-dashboard main section div.card div.options button:hover {
+  /* background: #c8ccce; */
+  opacity: 0.5;
+}
+
+
+
+
+

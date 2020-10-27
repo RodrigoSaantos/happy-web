@@ -20,6 +20,11 @@ function Landing() {
         <p>Visite orfanatos e mude o dia de muitas crianças.</p>
       </main>
 
+      <Link to="/login" >
+        <button className="restrict">Acesso Restrito</button>
+      
+      </Link>
+
       <div className="location">
         <strong>Embu das Artes</strong>
         <span>São Paulo</span>

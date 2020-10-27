@@ -1,0 +1,57 @@
+aside.app-sidbar {
+  position: fixed;
+  height: 100%;
+  padding: 32px 24px;
+  background: linear-gradient(329.54deg, #15B6D6 0%, #15D6D6 100%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+aside.app-sidbar .menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 115px;
+  margin: auto;
+}
+
+aside.app-sidbar img {
+  width: 48px;
+}
+
+aside.app-sidbar footer a,
+aside.app-sidbar footer button,
+aside.app-sidbar .menu button {
+  width: 48px;
+  height: 48px;
+
+  border: 0;
+
+  background: #12AFCB;
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+aside.app-sidbar footer a:hover,
+aside.app-sidbar footer button:hover,
+aside.app-sidbar .menu button:hover {
+  background: #17D6EB;
+}
+
+aside.app-sidbar .menu button.active {
+  background: #FFD666;
+}
+
+aside.app-sidbar .menu button.active.pending {
+  background: #FFD666;
+}

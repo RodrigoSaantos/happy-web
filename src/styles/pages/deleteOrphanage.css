@@ -1,0 +1,84 @@
+#page-delete-orphanage {
+  width: 100vw;
+  height: 100vh;
+  background: #FF669D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#page-delete-orphanage .content-exclude {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+  max-height: 680px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  background: url(../../images/exclude.svg) no-repeat 80% center;
+}
+
+#page-delete-orphanage .content-exclude main {
+  margin: auto auto auto 155px;
+  max-width: 291px;
+  text-align: center;
+}
+
+#page-delete-orphanage .content-exclude main h1 {
+  font-weight: 800;
+  font-size: 80px;
+  color: #FFFFFF;
+  margin-bottom: 32px;
+}
+
+#page-delete-orphanage .content-exclude main span {
+  font-size: 24px;
+  color: #FFFFFF;
+  margin-bottom: 64px;
+  text-align: center;
+  display: flex;
+}
+
+#page-delete-orphanage .content-exclude main button {
+  width: 243px;
+  height: 64px;
+  background: #D6487B;
+  border-radius: 20px;
+  border: none;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+#page-delete-orphanage .content-exclude main div {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  column-gap: 25px;
+ 
+  
+}
+#page-delete-orphanage .content-exclude main div a button:first-child {
+  width: 162px;
+  background: #37C77F;
+  transition: background-color 0.2s;
+}
+
+#page-delete-orphanage .content-exclude main div a button:first-child:hover {
+  background: #3EE08F;
+}
+
+#page-delete-orphanage .content-exclude main div button:last-child {
+  width: 95px;
+  transition: background-color 0.2s;
+}
+
+#page-delete-orphanage .content-exclude main div button:last-child:hover {
+  background: #e20e5c;
+}

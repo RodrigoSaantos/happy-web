@@ -1,0 +1,32 @@
+ label {
+  color: #8FA7B3;
+}
+
+ input[type="text"] {
+  width: 360px;
+  height: 64px;
+  margin: 8px 0;
+  padding-left: 24px;
+  padding-right: 24px;
+  background: #F5F8FA;
+  color: #5C8599;
+  border: 1px solid #D3E2E5;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+ input[type="password"] {
+  width: 360px;
+  height: 64px;
+  margin: 8px 0;
+  padding-left: 24px;
+  padding-right: 24px;
+  background: #F5F8FA;
+  color: #5C8599;
+  border: 1px solid #D3E2E5;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+ input:focus ~ button {
+  opacity: 1 !important;
+}

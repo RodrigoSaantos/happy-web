@@ -1,0 +1,22 @@
+form fieldset button {
+  width: 360px;
+  height: 64px;
+  margin-top: 24px;
+  background: #37C77F;
+  border-radius: 20px;
+  border: none;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+
+  color: #FFFFFF;
+  cursor: pointer;
+
+  opacity: 0.5;
+
+  transition: background-color 0.9s;
+}

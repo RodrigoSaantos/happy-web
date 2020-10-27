@@ -44,7 +44,7 @@
 
 .content-wrapper .location {
   position: absolute;
-  right: 0;
+  left: 27%;
   top: 0;
 
   font-size: 24px;
@@ -53,17 +53,48 @@
   display: flex;
   flex-direction: column;
 
-  text-align: right;
+  text-align: left;
 }
 
 .content-wrapper .location strong {
   font-weight: 800;
 }
 
+.content-wrapper button.restrict {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 222px;
+  height: 56px;
+
+  background: #12D4E0;
+  border-radius: 20px;
+  border: none;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 30px;
+
+  text-align: center;
+
+  color: #FFFFFF;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+}
+
+.content-wrapper button.restrict:hover {
+  color: #15C3D6;
+  background: #96FEFF;
+}
+
 .content-wrapper .enter-app {
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: 15%;
 
   width: 80px;
   height: 80px;
