@@ -12,7 +12,7 @@ import api from '../services/api';
 import { LeafletMouseEvent } from 'leaflet';
 import { Link } from 'react-router-dom';
 
-interface OrphanagesProps {
+export interface OrphanagesProps {
   about: string
   id: number
   images: Array<{
@@ -90,9 +90,11 @@ const Dashboard: React.FC = () => {
                   <div className="options">
                     <h2>{orphanage.name}</h2>
                     <div>
+                      <Link to={`/update-orphanage?id=${orphanage.id}`}>
                       <button type="button">
                         <img src={editIcon} alt="" />
                       </button>
+                      </Link>
                         <Link to={`/delete-orphanage?id=${orphanage.id}`}>
                       <button type="button">
                           <img src={trashIcon} alt="" />
