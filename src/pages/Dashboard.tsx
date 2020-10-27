@@ -66,7 +66,7 @@ const Dashboard: React.FC = () => {
             {orphanages.map(orphanage => {
               return (
 
-                <div className="card">
+                <div className="card" key={orphanage.id}>
 
                   <Map
                     center={[orphanage.latitude, orphanage.longitude]}
@@ -93,7 +93,7 @@ const Dashboard: React.FC = () => {
                       <button type="button">
                         <img src={editIcon} alt="" />
                       </button>
-                        <Link to="/delete-orphanage">
+                        <Link to={`/delete-orphanage?id=${orphanage.id}`}>
                       <button type="button">
                           <img src={trashIcon} alt="" />
                       </button>

@@ -1,9 +1,33 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import api from '../services/api'
 
 import '../styles/pages/deleteOrphanage.css'
 
 function DeleteOrphanage() {
+
+  const history = useHistory()
+  
+  const splitOrphanage = window.location.search.split('?id=')
+  const orphanageId = splitOrphanage[1]
+  
+    useEffect(() => {
+
+      api.get(`orphanage?id=${orphanageId}`).then(response => {
+        console.log(response.data);
+      })
+  
+    }, [orphanageId])
+
+    function handleDeleteOrphanage() {
+      api.delete(`delete-users/${orphanageId}`)
+
+      setTimeout(() => {
+        history.push('/dashboard')
+        alert('Orfanato excluído com sucesso')
+        
+      }, 100);
+    }
   return (
     <div id="page-delete-orphanage">
       <div className="content-exclude">
@@ -15,7 +39,7 @@ function DeleteOrphanage() {
             <Link to="/dashboard">
               <button>Voltar para o mapa</button>
             </Link>
-            <button>Sim!</button>
+            <button onClick={handleDeleteOrphanage}>Sim!</button>
 
           </div>
         </main>
