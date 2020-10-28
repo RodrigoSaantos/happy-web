@@ -8,27 +8,14 @@ import Sidbar from "../components/Sidbar";
 import mapIcon from "../utils/mapIcon";
 import api from "../services/api";
 import { useHistory } from "react-router-dom";
-import { OrphanagesProps } from "./Dashboard";
-
 
 export default function UpdateOrphanage() {
 
   const history = useHistory()
-  
+
   const splitOrphanage = window.location.search.split('?id=')
   const orphanageId = splitOrphanage[1]
 
-  const [orphanageData, setOrphanageData] = useState<OrphanagesProps>()
-
-
-  useEffect(() => {
-    api.get(`orphanages/${orphanageId}`).then(response => {
-      console.log(response.data);
-
-      setOrphanageData(response.data)
-    })
-  }, [orphanageId])
-  
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 })
 
   const [name, setName] = useState('')
@@ -39,6 +26,18 @@ export default function UpdateOrphanage() {
   const [images, setImages] = useState<File[]>([])
   const [previewImages, setPreviewImages] = useState<string[]>([])
 
+  useEffect(() => {
+    api.get(`orphanages/${orphanageId}`).then(response => {
+
+      setName(response.data.name)
+      setAbout(response.data.about)
+      setInstructions(response.data.instructions)
+      setOpening_hours(response.data.opening_hours)
+      setOpen_on_weekends(response.data.open_on_weekends)
+      setPosition({ latitude: response.data.latitude, longitude: response.data.longitude })
+      setPreviewImages(response.data.images.map((image: any) => { return image.url }))
+    })
+  }, [orphanageId])
   function handleMapClick(event: LeafletMouseEvent) {
 
     const { lat, lng } = event.latlng
@@ -80,7 +79,7 @@ export default function UpdateOrphanage() {
     data.append('instructions', instructions)
     data.append('opening_hours', opening_hours)
     data.append('open_on_weekends', String(open_on_weekends))
-    
+
     images.forEach(image => {
       data.append('images', image);
     })
@@ -94,7 +93,9 @@ export default function UpdateOrphanage() {
   }
 
 
+
   return (
+
     <div id="page-update-orphanage">
 
 
@@ -106,7 +107,7 @@ export default function UpdateOrphanage() {
             <legend>Dados</legend>
 
             <Map
-              center={[-23.6548861, -46.8464719]}
+              center={[position.latitude, position.longitude]}
               style={{ width: '100%', height: 280 }}
               zoom={15}
               onclick={handleMapClick}
@@ -130,8 +131,7 @@ export default function UpdateOrphanage() {
               <input
                 id="name"
                 value={name}
-                onChange={event =>
-                  setName(event.target.value)}
+                onChange={event => setName(event.target.value)}
               />
             </div>
 
@@ -140,8 +140,8 @@ export default function UpdateOrphanage() {
               <textarea
                 id="name"
                 maxLength={300}
-                value={about} onChange={event =>
-                  setAbout(event.target.value)}
+                value={about}
+                onChange={event => setAbout(event.target.value)}
               />
             </div>
 
@@ -151,7 +151,7 @@ export default function UpdateOrphanage() {
               <div className="images-container">
                 {previewImages.map(image => {
                   return (
-                    <img key={image} src={image} alt={name}/>
+                    <img key={image} src={image} alt={name} />
                   )
                 })}
 
@@ -159,9 +159,8 @@ export default function UpdateOrphanage() {
                   <FiPlus size={24} color="#15b6d6" />
                 </label>
 
-
               </div>
-                <input multiple onChange={handleSelectImages} type="file" id="image[]"/>
+              <input multiple onChange={handleSelectImages} type="file" id="image[]" />
 
             </div>
           </fieldset>
