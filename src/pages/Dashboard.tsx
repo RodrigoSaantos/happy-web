@@ -90,12 +90,12 @@ const Dashboard: React.FC = () => {
                   <div className="options">
                     <h2>{orphanage.name}</h2>
                     <div>
-                      <Link to={`/update-orphanage?id=${orphanage.id}`}>
+                      <Link to={`/update-orphanage/${orphanage.id}`}>
                       <button type="button">
                         <img src={editIcon} alt="" />
                       </button>
                       </Link>
-                        <Link to={`/delete-orphanage?id=${orphanage.id}`}>
+                        <Link to={`/delete-orphanage/${orphanage.id}`}>
                       <button type="button">
                           <img src={trashIcon} alt="" />
                       </button>

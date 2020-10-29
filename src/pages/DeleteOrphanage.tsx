@@ -8,14 +8,17 @@ function DeleteOrphanage() {
 
   const history = useHistory()
   
-  const splitOrphanage = window.location.search.split('?id=')
-  const orphanageId = splitOrphanage[1]
+  const splitOrphanage = window.location.pathname.split('/')
+  const orphanageId = splitOrphanage[2]
   
-    useEffect(() => {
+  useEffect(() => {
 
-      api.get(`orphanage?id=${orphanageId}`).then(response => {
+      api.get(`orphanage/${orphanageId}`).then(response => {
         console.log(response.data);
+        console.log(orphanageId);
       })
+
+      console.log(orphanageId);
   
     }, [orphanageId])
 

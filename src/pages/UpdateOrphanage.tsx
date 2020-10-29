@@ -13,8 +13,8 @@ export default function UpdateOrphanage() {
 
   const history = useHistory()
 
-  const splitOrphanage = window.location.search.split('?id=')
-  const orphanageId = splitOrphanage[1]
+  const splitOrphanage = window.location.pathname.split('/')
+  const orphanageId = splitOrphanage[2]
 
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 })
 
@@ -28,6 +28,8 @@ export default function UpdateOrphanage() {
 
   useEffect(() => {
     api.get(`orphanages/${orphanageId}`).then(response => {
+
+      console.log(response.data);
 
       setName(response.data.name)
       setAbout(response.data.about)
@@ -68,27 +70,45 @@ export default function UpdateOrphanage() {
   async function handleSubmit(event: FormEvent) {
     event.preventDefault()
 
-    const { latitude, longitude } = position
+    // const { latitude, longitude } = position
 
-    const data = new FormData()
+    // const data = new FormData()
 
-    data.append('name', name)
-    data.append('about', about)
-    data.append('latitude', String(latitude))
-    data.append('longitude', String(longitude))
-    data.append('instructions', instructions)
-    data.append('opening_hours', opening_hours)
-    data.append('open_on_weekends', String(open_on_weekends))
+    // data.append('name', name)
+    // data.append('about', about)
+    // data.append('latitude', String(latitude))
+    // data.append('longitude', String(longitude))
+    // data.append('instructions', instructions)
+    // data.append('opening_hours', opening_hours)
+    // data.append('open_on_weekends', String(open_on_weekends))
 
-    images.forEach(image => {
-      data.append('images', image);
-    })
+    // images.forEach(image => {
+    //   data.append('images', image);
+    // })
 
-    await api.post('orphanages', data)
+    // await api.put('update-orphanage', data)
 
-    alert('Cadastro realizado com sucesso!')
+    
+    
+    const latitude = position.latitude
+    const longitude = position.longitude
+    
+    const datas = {
+      name,
+      about,
+      instructions,
+      opening_hours,
+      open_on_weekends,
+      latitude,
+      longitude
+    }
+    
+    await api.put(`update-orphanage/${orphanageId}`, datas)
+    
+    alert('Atualização realizada com sucesso!')
+    history.push('/dashboard')
 
-    history.push('/app')
+    console.log(datas);
 
   }
 
