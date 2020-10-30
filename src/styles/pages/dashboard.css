@@ -9,7 +9,7 @@
 
 #page-dashboard main section {
   max-width: 80%;
-  margin:  64px auto;
+  margin: 64px auto;
 }
 
 #page-dashboard main section.display-hide {
@@ -39,10 +39,12 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 25px;
+  column-gap: 25px;
 }
 
 #page-dashboard main section div.card {
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   height: 309px;
   background: #FFFFFF;
   border: 1px solid #D3E2E5;
