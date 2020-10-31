@@ -68,8 +68,6 @@ function SidbarApp() {
     setOrphanagesPending(response.data)
   })
 }, [])
-
-  console.log(orphanagesPending.length);
   
   return (
     <aside className="app-sidbar">
