@@ -14,11 +14,11 @@ function DeleteOrphanage() {
   useEffect(() => {
 
       api.get(`orphanage/${orphanageId}`).then(response => {
-        console.log(response.data);
-        console.log(orphanageId);
+        // console.log(response.data);
+        // console.log(orphanageId);
       })
 
-      console.log(orphanageId);
+      // console.log(orphanageId);
   
     }, [orphanageId])
 

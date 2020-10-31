@@ -30,7 +30,7 @@ export const AuthProvider: React.FC = ({children})  => {
 
     const response = await api.post(`list-users/`, { email, password })
 
-    console.log(response.data);
+    // console.log(response.data);
 
     setTimeout(function() {
       setUser(response.data)

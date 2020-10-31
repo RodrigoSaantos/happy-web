@@ -20,7 +20,7 @@ function AuthRoutes() {
         <Route path='/orphanages/:id' component={Orphanage} />
         <Route path='/login/' component={Login} />
         <Route path='/esqueci-minha-senha/' component={ForgotMyPassword} />
-        <Route path='/redefinicao-de-senha/' component={RedefinitionPassword} />
+        <Route path='/redefinicao-de-senha/:id' component={RedefinitionPassword} />
         <Route path='/cadastrado-com-sucesso/' component={CadastradoComSucesso} />
       </Switch>
 

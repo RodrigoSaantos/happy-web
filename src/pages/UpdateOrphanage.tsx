@@ -29,7 +29,7 @@ export default function UpdateOrphanage() {
   useEffect(() => {
     api.get(`orphanages/${orphanageId}`).then(response => {
 
-      console.log(response.data);
+      // console.log(response.data);
 
       setName(response.data.name)
       setAbout(response.data.about)
@@ -108,7 +108,7 @@ export default function UpdateOrphanage() {
     alert('Atualização realizada com sucesso!')
     history.push('/dashboard')
 
-    console.log(datas);
+    // console.log(datas);
 
   }
 

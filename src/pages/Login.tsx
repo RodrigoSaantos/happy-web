@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import { FiArrowLeft } from 'react-icons/fi'
 import { Link, useHistory } from 'react-router-dom'
 
@@ -13,28 +13,24 @@ import { useAuth } from '../contexts/auth'
 
 function Login() {
   const { signed, signIn } = useAuth()
-  console.log(signed);
+  // console.log(signed);
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  
+  const [inputOne, setInputOne] = useState(false)
+  const [inputTwo, setInputTwo] = useState(false)
 
-  function active1() {
-    const valueOfInput = document.querySelectorAll('input')
+  useEffect(() => {
 
-      if (valueOfInput[0].selectionEnd as number > 0 ) {
-        document.querySelector('button')?.setAttribute('class', 'active')
-      } else {
-        document.querySelector('button')?.removeAttribute('class')
-      }
-  }
-  function active2() {
-    const valueOfInput = document.querySelectorAll('input')
-      if (valueOfInput[1].selectionEnd as number > 0 ) {
-        document.querySelector('button')?.setAttribute('class', 'active')
-      } else {
-        document.querySelector('button')?.removeAttribute('class')
-      }
-  }
+    const emailTrue = email !== ""
+    setInputOne(emailTrue)
+
+    const passwordTrue = password !== ""
+    setInputTwo(passwordTrue)
+
+  }, [email, password])
+
   function active3() {
     const valueOfInput = document.querySelectorAll('input')
 
@@ -46,12 +42,18 @@ function Login() {
   }
 
   const history = useHistory()
-  async function handleSignIn(e: FormEvent) {
+   function handleSignIn(e: FormEvent) {
     e.preventDefault()
-    await signIn(email, password)
-    history.push('/dashboard')
+
+     signIn(email, password).then(() => {
+       history.push('/dashboard')
+
+     }).catch(() => {
+       alert('email ou senha incorreta!')
+     })
 
   }
+
   return (
     <div id="page-login">
 
@@ -82,7 +84,6 @@ function Login() {
               label="E-mail"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              onFocus={active1}
             />
 
             <Input
@@ -91,11 +92,10 @@ function Login() {
               type="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
-              onFocus={active2}
             />
 
             <div className="checkbox">
-              <input type="checkbox" name="remember" id="remember" onChange={active3} onFocus={active3} />
+              <input type="checkbox" name="remember" id="remember" onChange={active3} />
               <label htmlFor="remember">Lembrar-me</label>
               <Link to="/esqueci-minha-senha">
               
@@ -106,6 +106,7 @@ function Login() {
             <ButtonEnter
               name="Entrar"
               type="submit"
+              className={inputOne || inputTwo ? 'active' : inputTwo || inputOne ? 'active' : ''}
             />
           </fieldset>
         </form>

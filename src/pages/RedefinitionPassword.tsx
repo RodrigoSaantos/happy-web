@@ -1,14 +1,24 @@
-import React from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import { FiArrowLeft } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import ButtonEnter from '../components/ButtonEnter'
 import Input from '../components/Input'
 
 import LayoutLogin from '../components/LayoutLogin'
+import api from '../services/api'
 
 import '../styles/components/redefinitionPassword.css'
 
+interface UserIdProps {
+  id: string
+}
+
 function RedefinitionPassword() {
+  const history = useHistory()
+  const params = useParams<UserIdProps>()
+
+  const [novaSenha, setNovaSenha] = useState('')
+  const [repetirSenha, setRepetirSenha] = useState('')
   function active1() {
     const valueOfInput = document.querySelectorAll('input')
 
@@ -18,6 +28,34 @@ function RedefinitionPassword() {
         document.querySelector('button')?.removeAttribute('class')
       }
   }
+
+  function handleSubmit(e:FormEvent) {
+    e.preventDefault()
+
+    if (novaSenha === repetirSenha) {
+      api.put(`/update-password/${params.id}`, {
+        novaSenha
+      })
+      alert('Senha redefinida com sucesso!')
+      history.push('/login')
+    } else {
+      alert('As senhas não coincidem!')
+    }
+
+    console.log(params.id);   
+  }
+
+  const [inputOne, setInputOne] = useState(false)
+  const [inputTwo, setInputTwo] = useState(false)
+  useEffect(() => {
+
+    const novaSenhaTrue = novaSenha !== ""
+    setInputOne(novaSenhaTrue)
+
+    const repetirSenhaTrue = repetirSenha !== ""
+    setInputTwo(repetirSenhaTrue)
+
+  }, [novaSenha, repetirSenha])
   return (
     <LayoutLogin pageName="page-forgot-my-password">
 
@@ -29,27 +67,29 @@ function RedefinitionPassword() {
           />
         </Link>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <fieldset>
             <legend>Redefinição de senha</legend>
             <span>Escolha uma nova senha para você acessar o dashboard do Happy.</span>
 
             <Input
-              name="novasenha"
+              name="novaSenha"
               label="Nova senha"
               type="password"
-              onChange={active1}
+              value={novaSenha}
+              onChange={e => {setNovaSenha(e.target.value)}}
               onFocus={active1}
             />
 
             <Input
-              name="repetirsenha"
+              name="repetirSenha"
               label="Repetir senha"
               type="password"
-              onChange={active1}
+              value={repetirSenha}
+              onChange={e => { setRepetirSenha(e.target.value)}}
               onFocus={active1}
             />
-            <ButtonEnter name="Entrar"/>
+            <ButtonEnter name="Entrar" type="submit" className={inputOne || inputTwo ? 'active' : inputTwo || inputOne ? 'active' : ''} />
           </fieldset>
         </form>
 
