@@ -4,6 +4,7 @@ import mapIcon from "../utils/mapIcon";
 
 import editIcon from '../images/edit-3.svg'
 import trashIcon from '../images/trash.svg'
+import noOneIcon from '../images/no-one.svg'
 
 import SidbarApp from '../components/SidbarApp'
 
@@ -69,7 +70,9 @@ const Dashboard: React.FC = () => {
         <section>
           <header>
             <h1>Orfanatos cadastrados</h1>
-            <span>{`${orphanages.length} orfanatos`}</span>
+            <span>
+              {orphanages.length > 1 ? `${orphanages.length} orfanatos` : `${orphanages.length} orfanato`}
+            </span>
           </header>
 
           <div className="cards">
@@ -122,55 +125,65 @@ const Dashboard: React.FC = () => {
         <section className="display-hide">
           <header>
             <h1>Cadastros Pendentes</h1>
-            <span>{`${orphanagesPending.length} orfanatos`}</span>
+            <span>
+              {orphanagesPending.length > 1 ? `${orphanagesPending.length} orfanatos` : `${orphanagesPending.length} orfanato`}
+            </span>
           </header>
 
-          <div className="cards">
+          {orphanagesPending.length > 0 // if
 
-            {orphanagesPending.map(orphanagePending => {
-              return (
+            ? // condition
 
-                <div className="card" key={orphanagePending.id}>
-                  <Map
-                    center={[orphanagePending.latitude, orphanagePending.longitude]}
-                    style={{ width: '100%', height: 227, borderRadius: 20 }}
-                    zoom={15}
-                    onclick={handleMapClick}
+            <div className="cards">
 
-                  >
-                    <TileLayer
-                      url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
-                    />
+              {orphanagesPending.map(orphanagePending => {
+                return (
 
-                    {orphanagePending.latitude !== 0 && (
-                      <Marker
-                        interactive={false}
-                        icon={mapIcon}
-                        position={[orphanagePending.latitude, orphanagePending.longitude]}
-                      />)}
+                  <div className="card" key={orphanagePending.id}>
+                    <Map
+                      center={[orphanagePending.latitude, orphanagePending.longitude]}
+                      style={{ width: '100%', height: 227, borderRadius: 20 }}
+                      zoom={15}
+                      onclick={handleMapClick}
 
-                    {/*  */}
-                  </Map>
-                  <div className="options">
-                    <h2>{orphanagePending.name}</h2>
-                    <Link to={`/pending-orphanage/${orphanagePending.id}`}>
-                        <button type="button" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
+                    >
+                      <TileLayer
+                        url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+                      />
+
+                      {orphanagePending.latitude !== 0 && (
+                        <Marker
+                          interactive={false}
+                          icon={mapIcon}
+                          position={[orphanagePending.latitude, orphanagePending.longitude]}
+                        />)}
+
+                      {/*  */}
+                    </Map>
+                    <div className="options">
+                      <h2>{orphanagePending.name}</h2>
+                      <Link to={`/pending-orphanage/${orphanagePending.id}`}>
+                        <button type="button" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
                           <FiArrowRight size={24} color="#15C3D6" />
                         </button>
                       </Link>
 
+                    </div>
 
                   </div>
+                )
 
+              })}
 
+            </div>
 
-                </div>
-              )
+            : //else
 
-            })}
-
-
-          </div>
+            <div className="no-one-data">
+              <img src={noOneIcon} alt="Nenhum no momento" />
+              <span>Nenhum no momento</span>
+            </div>
+          }
 
         </section>
       </main>

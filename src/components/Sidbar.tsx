@@ -1,6 +1,6 @@
 import React from 'react'
 import { FiArrowLeft } from 'react-icons/fi'
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import mapMarkerImg from '../images/map-marker.svg';
 
 import '../styles/components/sidbar.css'
@@ -11,7 +11,9 @@ function Sidbar() {
   
   return (
     <aside className="app-sidbar">
-    <img src={mapMarkerImg} alt="Happy" />
+      <Link to="/">
+        <img src={mapMarkerImg} alt="Happy" />
+      </Link>
 
     <footer>
       <button type="button" onClick={goBack}>

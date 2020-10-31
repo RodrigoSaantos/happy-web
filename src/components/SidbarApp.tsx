@@ -61,7 +61,7 @@ function SidbarApp() {
   
   return (
     <aside className="app-sidbar">
-      <Link to="/dashboard">
+      <Link to="/">
         <img src={mapMarkerImg} alt="Happy" />
       </Link>
 

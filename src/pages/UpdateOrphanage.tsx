@@ -142,8 +142,7 @@ export default function UpdateOrphanage() {
                   icon={mapIcon}
                   position={[position.latitude, position.longitude]}
                 />)}
-
-              {/*  */}
+                
             </Map>
 
             <div className="input-block">

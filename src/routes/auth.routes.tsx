@@ -8,6 +8,7 @@ import CreateOrphanage from '../pages/CreateOrphanage'
 import Login from '../pages/Login'
 import ForgotMyPassword from '../pages/ForgotMyPassword'
 import RedefinitionPassword from '../pages/RedefinitionPassword'
+import CadastradoComSucesso from '../pages/RegisteredSuccessfully'
 
 function AuthRoutes() {
   return (
@@ -20,6 +21,7 @@ function AuthRoutes() {
         <Route path='/login/' component={Login} />
         <Route path='/esqueci-minha-senha/' component={ForgotMyPassword} />
         <Route path='/redefinicao-de-senha/' component={RedefinitionPassword} />
+        <Route path='/cadastrado-com-sucesso/' component={CadastradoComSucesso} />
       </Switch>
 
     </BrowserRouter>

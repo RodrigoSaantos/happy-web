@@ -1,0 +1,63 @@
+#page-registered-successfully {
+  width: 100vw;
+  height: 100vh;
+  background: #37C77F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#page-registered-successfully .content-exclude {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+  max-height: 680px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  background: url(../../images/register.svg) no-repeat 80% center;
+}
+
+#page-registered-successfully .content-exclude main {
+  margin: auto auto auto 80px;
+  max-width: 392px;
+  text-align: center;
+}
+
+#page-registered-successfully .content-exclude main h1 {
+  font-weight: 800;
+  font-size: 80px;
+  color: #FFFFFF;
+  margin-bottom: 32px;
+}
+
+#page-registered-successfully .content-exclude main span {
+  font-size: 24px;
+  color: #FFFFFF;
+  margin-bottom: 64px;
+  text-align: center;
+  display: flex;
+}
+
+#page-registered-successfully .content-exclude main button {
+  width: 243px;
+  height: 64px;
+  background: #31B272;
+  border-radius: 20px;
+  border: none;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#page-registered-successfully .content-exclude main button:hover {
+  background: #3EE08F;
+}

@@ -26,7 +26,9 @@ function OrphanagesMap() {
     <div id="page-map">
       <aside>
         <header>
-          <img src={mapMarketImg} alt="Happy" />
+          <Link to="/">
+            <img src={mapMarketImg} alt="Happy" />
+          </Link>
 
           <h2>Escolha um orfanato no mapa</h2>
           <p>Muitas crianças estão esperando a sua visita :)</p>
