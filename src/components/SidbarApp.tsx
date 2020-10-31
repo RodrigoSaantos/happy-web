@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/auth';
 import mapMarkerImg from '../images/map-marker.svg';
@@ -6,10 +6,12 @@ import mapMarkerImg from '../images/map-marker.svg';
 import power from '../images/power.svg'
 import locationIcon from '../images/map-pin.svg'
 import locationWhiteIcon from '../images/map-pin-white.svg'
-import alertCircleIcon from '../images/alert-circle.svg'
-import alertCircleWhiteIcon from '../images/alert-circle-white.svg'
 
 import '../styles/components/sidbarApp.css'
+import api from '../services/api';
+import { OrphanagesProps } from '../pages/Dashboard';
+import { FiAlertCircle } from 'react-icons/fi';
+import { BsQuestionCircle } from 'react-icons/bs';
 
 
 function SidbarApp() {
@@ -57,7 +59,17 @@ function SidbarApp() {
 
 
  }
+ 
+ const [orphanagesPending, setOrphanagesPending] = useState<OrphanagesProps[]>([])
 
+ useEffect(() => {
+  api.get('orphanage-pending').then(response => {
+
+    setOrphanagesPending(response.data)
+  })
+}, [])
+
+  console.log(orphanagesPending.length);
   
   return (
     <aside className="app-sidbar">
@@ -70,8 +82,14 @@ function SidbarApp() {
           <img src={ show ? locationIcon : locationWhiteIcon} width="24" height="24" alt="location"/>
         </button>
         <button type="button" onClick={showPending}>
-          <img src={ show ? alertCircleWhiteIcon : alertCircleIcon} width="24" height="24" alt="alert"/>
+          {
+            orphanagesPending.length > 0
+            ? show ? <BsQuestionCircle size={24} color="#FFF" /> : <BsQuestionCircle size={24} color="#0089A5"/> 
+            ://icon without pendent
+            show ? <FiAlertCircle size={24} color="#FFF"  /> : <FiAlertCircle size={24} color="#0089A5" />
+          }
         </button>
+        
       </div>
 
     <footer>
