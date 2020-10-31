@@ -9,6 +9,7 @@ import Landing from '../pages/Landing'
 import OrphanagesMap from '../pages/OrphanagesMap'
 import CreateOrphanage from '../pages/CreateOrphanage'
 import Orphanage from '../pages/Orphanage'
+import CadastradoComSucesso from '../pages/RegisteredSuccessfully'
 
 function AppRoutes() {
   return (
@@ -23,6 +24,7 @@ function AppRoutes() {
       <Route path='/app' component={OrphanagesMap} />
       <Route path='/orphanages/create' component={CreateOrphanage} />
       <Route path='/orphanages/:id' component={Orphanage} />
+      <Route path='/cadastrado-com-sucesso/' component={CadastradoComSucesso} />
     </Switch>
   </BrowserRouter>
 
