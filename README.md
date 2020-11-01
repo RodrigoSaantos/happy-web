@@ -111,3 +111,15 @@ $ npm dev
 ---
 ![Alt Text](https://raw.githubusercontent.com/RodrigoSaantos/gifs/main/happy_web.gif)
 
+---
+
+# 🏅 Happy Web 2.0 
+Agora colocarei mostrarei a minha versão do projeto proposto pela @Rocketseat para dar um salto ainda maior!
+
+## 🏡 Cadastrando novos orfanatos
+---
+![Alt Text](https://github.com/RodrigoSaantos/gifs/blob/main/happy-web-2.0-register-new-orphanage.gif)
+
+## 🔒 Acesso Restrito
+---
+![Alt Text](https://github.com/RodrigoSaantos/gifs/blob/main/happy-web-2.0-restrict.gif)
